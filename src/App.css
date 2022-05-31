@@ -3,7 +3,6 @@
   margin: 0;
 }
 
-html,
-body{
-  background-color: #e8f2f3;
+html,body{
+  background-color: rgb(238, 230, 220);
 }
