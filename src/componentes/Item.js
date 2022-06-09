@@ -1,4 +1,5 @@
 import Button from "./Boton";
+import { Link } from "react-router-dom";
 
 const Item = ({ id, modelo, precio, img }) =>{
     return(
@@ -7,7 +8,12 @@ const Item = ({ id, modelo, precio, img }) =>{
             <div class="card-body">
                 <h5 class="card-title">{modelo}</h5>
                 <p class="card-text">{precio}</p>
-                <Button  label='Comprar'  clickComprar={()=> console.log('comprar')}/>
+                <div className="divisorcard">
+                <Button  label='Comprar'  clickcomprar={()=> console.log('comprar')}/>
+                </div>
+                <div>
+                <Link to={`/detail/${id}`} class="nav-link active"> Ver detalle </Link>
+                </div>
             </div>
         </div>
     )

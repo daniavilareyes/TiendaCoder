@@ -1,8 +1,89 @@
-*{
-  padding: 0;
-  margin: 0;
+* {
+    margin: 0;
+    padding: 0;
+}
+.barramenu{
+    background-color: #B1BCE6;
+    color: black;
+}
+.botoncarrito{
+    background-color: #7889ca;
+    padding: 5px 10px 5px 10px;
+    border-radius: 25px;
+    border-color: gray;
+}
+/*detail*/
+.carddetail {
+    padding: 10px;
+    background-color: rgb(252, 248, 248)!important;
+    margin: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.imagenarticulo{
+    width: 100%;
+    height: auto;
+}
+.card-body-detail {
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+.detalledelproducto{
+    margin-left: 10%;
+    margin-top: 1%;
+}
+.card {
+    padding: 10px;
+    background-color: rgb(252, 248, 248)!important;
+    margin: 30px;
+    text-align: center;
+    justify-content: center;
 }
 
-html,body{
-  background-color: rgb(238, 230, 220);
-}
+/*Boton*/
+.boton {
+     text-transform: uppercase;
+     text-decoration: none;
+     background-color: #570A57;
+     color: white;
+     padding: 10px 30px;
+     border: 1px solid;
+     border-radius: 1000px;
+     display: inline-block;
+     transition: all .2s;
+     position: relative;
+    }
+    
+    .boton:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 10px 20px rgba(27, 27, 27, .5);
+    }
+    
+    .boton:active {
+     transform: translateY(-3px);
+    }
+    
+    .boton::after {
+     content: "";
+     display: inline-block;
+     height: 100%;
+     width: 100%;
+     border-radius: 100px;
+     top: 0;
+     left: 0;
+     position: absolute;
+     z-index: -1;
+     transition: all .3s;
+    }
+    
+    .boton:hover::after {
+     background-color: rgb(0, 238, 255);
+     transform: scaleX(1.4) scaleY(1.5);
+     opacity: 0;
+    }
+
+
+    

@@ -1,17 +1,34 @@
  const articulo = [
-{id:1,modelo:"Entero",color:"Blanco",precio:4000,cantidad:1,img:"../imagenes/tdb.jpg"},
-{id:2,modelo:"Donatella",color:"Negro",precio:5500,cantidad:1,img:"../imagenes/tdb2.jpg"},
-{id:3,modelo:"Rainier",color:"Rojo",precio:5500,cantidad:1,img:"../imagenes/tdb3.jpg"},
-{id:4,modelo:"Tiana",color:"Rosado",precio:4000,cantidad:1,img:"../imagenes/tdb4.jpg"},
-{id:5,modelo:"Surfer",color:"Negro",precio:6500,cantidad:1,img:"../imagenes/tdb5.jpg"},
-{id:6,modelo:"Classic",color:"Bordo",precio:4500,cantidad:1,img:"../imagenes/tdb6.jpg"},
-{id:7,modelo:"Basic",color:"Celeste",precio:4000,cantidad:1,img:"../imagenes/tdb7.jpg"},
-{id:8,modelo:"Anastasia",color:"Rosado",precio:6500,cantidad:1,img:"../imagenes/tdb8.jpg"}]
+{id:"1",modelo:"Bianca",color:"Blanco",precio:4000,cantidad:1,img:"../imagenes/tdb.jpg",category:"Basicos"},
+{id:"2",modelo:"Donatella",color:"Negro",precio:5500,cantidad:1,img:"../imagenes/tdb2.jpg",category:"Basicos"},
+{id:"3",modelo:"Rainier",color:"Rojo",precio:5500,cantidad:1,img:"../imagenes/tdb3.jpg",category:"NuevosProductos"},
+{id:"4",modelo:"Tiana",color:"Rosado",precio:4000,cantidad:1,img:"../imagenes/tdb4.jpg",category:"NuevosProductos"},
+{id:"5",modelo:"Surfer",color:"Negro",precio:6500,cantidad:1,img:"../imagenes/tdb5.jpg",category:"Enteros"},
+{id:"6",modelo:"Classic",color:"Bordo",precio:4500,cantidad:1,img:"../imagenes/tdb6.jpg",category:"NuevosProductos"},
+{id:"7",modelo:"Basic",color:"Celeste",precio:4000,cantidad:1,img:"../imagenes/tdb7.jpg",category:"Basicos"},
+{id:"8",modelo:"Anastasia",color:"Rosado",precio:6500,cantidad:1,img:"../imagenes/tdb8.jpg",category:"Enteros"}]
 
 export const pedirRecursos = () => {
     return new Promise ((resolve, reject ) =>{
         setTimeout(() => {
             resolve(articulo)
-        }, 1500)
+        }, 1200)
     })
 }
+
+export const pedirRecursosById = (id) => {
+    return new Promise ((resolve, reject ) =>{
+        setTimeout(() => {
+            resolve(articulo.find(art => art.id === id))
+        }, 500)
+    })
+}
+
+export const pedirRecursosByCategory = (categoryId) => {
+    return new Promise ((resolve, reject ) => {
+        setTimeout(()=>{
+            resolve(articulo.filter(resp => resp.category === categoryId))
+        }, 500)
+    })
+}
+
