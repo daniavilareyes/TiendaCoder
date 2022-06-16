@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
 import './Navbar.css'
-import { pedirRecursosByCategory } from './Asyn'
-import { useState } from 'react'
-import ItemList from './Item'
+import { useContext } from 'react'
+import CarritoContext from './CartContext'
 
 const Menu = () => {
+
+  const {cantidad} = useContext(CarritoContext)
+
 
     return (
     <>
@@ -37,9 +39,9 @@ const Menu = () => {
           <button class="btn btn-outline-secondary" type="submit">Buscar</button>
         </form>
         </ul>
-        <button className='botoncarrito' >
-          <span class="material-symbols-outlined">shopping_cart </span>
-        </button>
+        <div className=' d-flex botoncarrito' >
+          <span class="material-symbols-outlined">shopping_cart {cantidad}</span>        
+        </div>
       </div>
     </div>
   </nav>

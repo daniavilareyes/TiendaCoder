@@ -1,6 +1,23 @@
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import Button from "./Boton";
+import './Contador'
+import Contador from "./Contador";
+import CarritoContext from "./CartContext";
 
-const ItemDetail = ({ id, modelo, img, precio }) =>{
+const ItemDetail = ({ id, modelo, img, precio, stock }) =>{
+    const {agregarItem} = useContext(CarritoContext)
+
+    const [cantidadAgregar, setCantidadAgregar] = useState (0)
+
+    const handleOnAdd = (cantidad) => {
+        console.log(`se agregaron ${cantidad} ${modelo}`)
+
+        agregarItem({id, modelo, cantidad, precio })
+
+        setCantidadAgregar(cantidad)
+    }
+
     return (
         <>
         <div className='carddetail d-flex  col col-lg-7 col-md-6 col-sm-7'>
@@ -15,6 +32,9 @@ const ItemDetail = ({ id, modelo, img, precio }) =>{
                     <option value='Talla m'>Talla m </option>
                     <option value='Talla l'>Talla l </option>
                 </select>
+                {cantidadAgregar === 0 
+                ? <Contador stock={stock} onAdd={handleOnAdd} />
+                : <Link to='/carrito'> Ir a comprar </Link> }
                 <Button className='botoncomprar botondetail' label='Comprar'  clickcomprar={()=> console.log('comprar')}/> 
             </div>
         </div>
