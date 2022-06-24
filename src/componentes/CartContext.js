@@ -6,6 +6,7 @@ export const CartProvider = ({ children }) => {
     const [carrito, setCarrito] = useState ([])
     const [cantidad, setCantidad] = useState ([])
 
+    
     useEffect(() =>{
         let cantidad = 0 
         carrito.forEach(articulo => {
@@ -23,6 +24,7 @@ export const CartProvider = ({ children }) => {
     const eliminarItem = (id) => {
         const productosCarrito = carrito.filter ( articulo => articulo.id !== id)
         setCarrito (productosCarrito)  
+        console.log(productosCarrito)
     }
 
     const vaciarCarrito = () =>{

@@ -13,7 +13,7 @@ const ItemDetail = ({ id, modelo, img, precio, stock }) =>{
     const handleOnAdd = (cantidad) => {
         console.log(`se agregaron ${cantidad} ${modelo}`)
 
-        agregarItem({id, modelo, cantidad, precio })
+        agregarItem({id, modelo, cantidad, precio, img })
 
         setCantidadAgregar(cantidad)
     }

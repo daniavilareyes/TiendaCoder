@@ -6,7 +6,7 @@ import CarritoContext from './CartContext'
 const Menu = () => {
 
   const {cantidad} = useContext(CarritoContext)
-
+  const {carrito} = useContext(CarritoContext)
 
     return (
     <>
@@ -39,9 +39,13 @@ const Menu = () => {
           <button class="btn btn-outline-secondary" type="submit">Buscar</button>
         </form>
         </ul>
-        <div className=' d-flex botoncarrito' >
-          <span class="material-symbols-outlined">shopping_cart {cantidad}</span>        
-        </div>
+      {carrito.length >0
+          ? <div className=' d-flex botoncarrito' >
+          <Link to='/carrito'><span class="material-symbols-outlined">shopping_cart {cantidad}</span></Link>        
+          </div>
+          : <> </>
+      }
+        
       </div>
     </div>
   </nav>
