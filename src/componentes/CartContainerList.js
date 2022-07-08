@@ -2,8 +2,12 @@ import Cart from './Cart'
 import CarritoContext from './CartContext'
 import { useContext } from 'react'
 
+
 const CartContainerList = ({ carrito }) =>{
 
+    const { precioTotal } = useContext(CarritoContext)
+
+    const total = precioTotal()
 
     return(
         <table class="table">
@@ -23,7 +27,7 @@ const CartContainerList = ({ carrito }) =>{
             <th></th>
             <th>Total</th>
             <th>
-            {carrito.reduce((total, art) => total + art.precio * art.cantidad, 0 )}    
+            {total}    
              </th>
            </tr>
         </tbody>

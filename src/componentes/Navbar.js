@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import './Navbar.css'
 import { useContext } from 'react'
 import CarritoContext from './CartContext'
 

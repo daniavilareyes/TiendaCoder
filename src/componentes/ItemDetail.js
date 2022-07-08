@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import Button from "./Boton";
 import './Contador'
 import Contador from "./Contador";
 import CarritoContext from "./CartContext";
+import Button from "./Boton";
+
 
 const ItemDetail = ({ id, modelo, img, precio, stock }) =>{
     const {agregarItem} = useContext(CarritoContext)
@@ -20,23 +21,25 @@ const ItemDetail = ({ id, modelo, img, precio, stock }) =>{
 
     return (
         <>
-        <div className='carddetail d-flex  col col-lg-7 col-md-6 col-sm-7'>
-            <div className="contenedorimagen">
-                <img className='imagenarticulo' src={img} alt='fotos'></img>
-            </div>
-            <div className="card-body-detail">
-                <h2 className='card-title'>{modelo}</h2>
-                <h4 className="card-text"> {precio}</h4>
-                <select>
+        <div className='container containerDetail'>
+                <div className=" d-flex col-md-8  cardDetail">
+                     <div className="containerImagen">
+                        <img src={img} className='imgDetail ' alt='fotos'/>
+                    </div>
+                    <div className="containerDetalles">
+                    <h2 className="card-title">{modelo}</h2>
+                    <h4 className="card-text">{precio}</h4>
+                    <select>
                     <option value='talla s'>Talla s </option>
                     <option value='Talla m'>Talla m </option>
                     <option value='Talla l'>Talla l </option>
-                </select>
-                {cantidadAgregar === 0 
-                ? <Contador stock={stock} onAdd={handleOnAdd} />
-                : <Link to='/carrito'> Ir a comprar </Link> }
-                <Button className='botoncomprar botondetail' label='Comprar'  clickcomprar={()=> console.log('comprar')}/> 
-            </div>
+                    </select>
+                    {cantidadAgregar === 0 
+                    ? <Contador stock={stock} onAdd={handleOnAdd} />
+                    : <Link to='/carrito' className='iracomprar'><Button label='Ir a carrito'/></Link> }
+                    </div>
+                </div>
+            
         </div>
         </>
     )

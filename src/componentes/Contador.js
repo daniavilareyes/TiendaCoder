@@ -18,14 +18,14 @@ const Contador =({ stock=0 , inicial= 1, onAdd })=> {
   
 
   return (
-<div className='Counter'>          
-            <div className='Controls'>
-                <button className="Button" onClick={decrement}>-</button>
-                <h3 className='Number'>{cantidad}</h3>
-                <button className="Button" onClick={increment}>+</button>
+      <div className='Counter'>          
+            <div className='counterContainer'>
+                <button className="Button boton counterControls " onClick={decrement}>-</button>
+                <h3 className='Number counterControls'>{cantidad}</h3>
+                <button className="Button boton counterControls" onClick={increment}>+</button>
             </div>
-            <div>
-                <button className="Button" onClick={() => onAdd(cantidad)}>Agregar al carrito</button>
+            <div className='containerAgregar'>
+            <button className="Button boton" onClick={() => onAdd(cantidad)}>Agregar al carrito</button>
             </div>
        </div>
   )
