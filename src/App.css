@@ -13,6 +13,14 @@
     border-color: gray;
 
 }
+.textbienvenido{
+    text-align: center;
+    font-family: 'Sacramento', cursive;
+    padding-top: 20px;
+}
+.itemlist{
+    padding-top: 40px;
+}
 /*detail*/
 
 .imagenarticulo{
@@ -131,20 +139,7 @@
         margin: 20px;
         display: inline-block;
     }
-    .containerFormulario{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: rgb(228, 221, 212);
-    }
-    .form{
-        width: 350px;
-        height: auto;
-        display: flex;
-        margin-top: 20px;
-        flex-direction: column;
-        justify-content: space-around;
-    }
+    
     .inputForm{
         width: 400px;
         height: auto;
@@ -152,8 +147,80 @@
     .botoncheckout {
         margin: 30px;
     }
-    .compraexitosa{
-        margin-top: 30px;
+   
+    /*Ingreso*/
+    .ingreso{
         display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .iniciarsesion{
+        display: block;
+        align-items: center;
+        padding: 70px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        margin: 20px;
+        margin-top: 60px;
+    }
+    .tituloinises{
+        text-align: center;
+        font-family: 'Playfair Display', serif;
+        letter-spacing: 3px;
+    }
+    
+    .formularioingreso{
+        display: flex;
+        flex-direction: column;
         justify-content: center;
+    }
+    .registro{
+        padding: 70px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        margin: 20px;
+        margin-top: 30px;
+    }
+    .tituloreg{
+        text-align: center;
+        font-family: 'Playfair Display', serif;
+        letter-spacing: 3px;
+    }
+    .contbienvenido{
+        padding: 50px;
+        margin: 40px;
+        justify-content: center;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .BienvenidoUsuario{
+        text-align: center;
+    }
+    .containerFormulario{
+        padding: 80px;
+        margin: 20px;
+        align-items: center;
+        justify-items: center;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    }
+    .formulariocheckout{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+    }
+    .textcheckout{
+        text-align: center;
+        font-family: 'Playfair Display', serif;
+        letter-spacing: 3px;
+    }
+    .compraexitosacontainer{
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+        padding: 40px;
+        margin: 40px;
+    }
+    .tablacompraexitosa{
+        padding: 40px;
+        margin: 40px;
     }

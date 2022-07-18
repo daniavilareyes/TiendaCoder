@@ -1,4 +1,6 @@
 import { useState, useEffect, createContext, useRef } from "react";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "./servicios/firebase";
 
 const CarritoContext = createContext()
 
@@ -53,8 +55,31 @@ export const CartProvider = ({ children }) => {
       return valor
     }
 
+    //* autentificacion 
+    const [usuario, setUsuario] = useState(null)
+
+    const signup = (email, password ) =>{
+      return  createUserWithEmailAndPassword(auth, email, password)
+    }
+    const loginup = (email, password) =>{
+        return signInWithEmailAndPassword(auth,email,password)
+    }
+    useEffect(() =>{
+        onAuthStateChanged( auth, currentUser =>{
+            setUsuario(currentUser)
+        })
+    },[])
+
+    const logOut = () =>{
+        signOut(auth)
+    }
+    const logInGoogle = () =>{
+      const googleProvider = new GoogleAuthProvider()
+      signInWithPopup(auth,googleProvider)
+    }
+
     return (
-        <CarritoContext.Provider value={{carrito, agregarItem, eliminarItem, vaciarCarrito, cantidad, precioTotal }}>
+        <CarritoContext.Provider value={{carrito,agregarItem,eliminarItem,vaciarCarrito,cantidad,precioTotal,signup, loginup, usuario, logOut, logInGoogle}}>
             {children}
         </CarritoContext.Provider>
     )

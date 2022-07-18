@@ -4,9 +4,12 @@ import CarritoContext from './CartContext'
 
 const Menu = () => {
 
-  const {cantidad} = useContext(CarritoContext)
-  const {carrito} = useContext(CarritoContext)
 
+  const {carrito,cantidad, logOut } = useContext(CarritoContext)
+   
+  const  manejarLogOut = async ()=>{
+    await logOut()
+  }
     return (
     <>
     <nav class="navbar navbar-expand-lg barramenu">
@@ -16,7 +19,7 @@ const Menu = () => {
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-2 ">
           <li class="nav-item">
             <Link to='/'  class="nav-link active">Home</Link>
           </li>
@@ -36,8 +39,18 @@ const Menu = () => {
           <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Buscar"></input>
           <button class="btn btn-outline-secondary" type="submit">Buscar</button>
-        </form>
+          </form>
         </ul>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="material-symbols-outlined">exit_to_app </span>
+              Login/logOut
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><Link to='/ingreso' class="nav-link active">Login</Link></li>
+              <li><a class="dropdown-item nav-link active" onClick={manejarLogOut} >LogOut</a></li>
+            </ul>
+        </div>
       {carrito.length >0
           ? <div className=' d-flex botoncarrito' >
           <Link to='/carrito'><span class="material-symbols-outlined">shopping_cart {cantidad}</span></Link>        

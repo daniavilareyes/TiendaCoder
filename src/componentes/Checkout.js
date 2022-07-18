@@ -7,21 +7,20 @@ import Button from "./Boton";
 
 const Checkout = () => {
     
-    const {carrito} = useContext(CarritoContext)
-
+    const {carrito,usuario, cantidad} = useContext(CarritoContext)
     const {precioTotal} = useContext(CarritoContext)
-
     const {vaciarCarrito} = useContext(CarritoContext)
 
     const total = precioTotal()
 
+    const [loading, setLoading] = useState(false)
     const [ compraId, setCompraId ] = useState('')
 
     const [inputs, setInputs] = useState ({
         nombre: '',
         apellido: '',
         direccion: '',
-        email: '',
+      
     })
 
     const handleChange = (event) =>{
@@ -30,15 +29,16 @@ const Checkout = () => {
         setInputs( values => ({...values, [name]: value}))
     }
 
+    const [dataUsurioInput, setDataUsuarioInput ] = useState()
+
     const handleSubmit = (event) =>{
         event.preventDefault();
-        
-       const datosCompra = {
+        setLoading(true)
+        const datosCompra = {
             cliente:{
                 nombre: (inputs.nombre),
                 apellido: (inputs.apellido),
                 direccion: (inputs.direccion),
-                email: (inputs.email),
             },
             items: carrito,
             total: total,
@@ -78,6 +78,7 @@ const Checkout = () => {
 
             batch.commit()
             setCompraId(id)
+            setDataUsuarioInput(datosCompra.cliente)
             vaciarCarrito()
         }). catch(error => {
             if (error.type === ' out_of_stock'){
@@ -87,15 +88,33 @@ const Checkout = () => {
             } else {
                 console.log (error)
             }
+        }).finally(()=>{
+            setLoading(false)
         })
         
     }
+
+        if(loading){
+            return (
+                <div className="text-center">
+                <div className="spinner-border" style={{width: "3rem", height: "3rem"}} role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+                <div className="spinner-grow"  style={{width: "3rem", height: "3rem"}} role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+                </div>
+            )
+        }
+        
+
 
     return(
         <>
         { carrito.length !== 0 
         ? <div className= 'containerFormulario'>
-        <form onSubmit={handleSubmit} className='form'>
+            <h3 className="textcheckout">¡Falta poco!</h3>
+        <form onSubmit={handleSubmit} className='formulariocheckout'>
       <label>Ingresa tu nombre:  </label>
       <input 
         type="text" 
@@ -123,14 +142,6 @@ const Checkout = () => {
           className='inputForm'
         />
         
-        <label>Ingresa tu email: </label>
-        <input 
-          type="text" 
-          name="email" 
-          value={inputs.email || ""} 
-          onChange={handleChange}
-          className='inputForm'
-        />
        
         <div className="botoncheckout">
         <Button  label= 'Comprar'></Button>
@@ -139,12 +150,30 @@ const Checkout = () => {
     </form>
     </div>
 
-    :<div className='compraexitosa'>
-            <h2> Compra exitosa!</h2>
-            <h3>Tu numero de pedido es # {compraId} </h3>
+    :<div className="compraexitosacontainer">
+            <h2 className="textcheckout"> ¡Compra exitosa!</h2>
+            <table class="table tablacompraexitosa">
+        <thead>
+            <tr className='table-active'>
+            <th scope="col"># Compra</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+           <tr className='table-light'>
+            <th>{compraId}</th>
+            <th>{dataUsurioInput.nombre || usuario.displayName}</th>
+            <th>{dataUsurioInput.direccion}</th>
+            <th>{usuario.email}</th>
+           </tr>
+        </tbody>
+        </table>
+        <p>Con este número de compra podrás hacer seguimiento de tu pedido</p>
     </div>
-}
-</>
+    }
+    </>
 
     )
 }
